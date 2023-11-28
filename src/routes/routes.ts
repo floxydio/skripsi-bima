@@ -4,6 +4,7 @@ import { BeliCabangController } from '../controllers/cabang/beli_cabang.controll
 import { BusukCabangController } from '../controllers/cabang/busuk_cabang.controller';
 import { MakananController } from '../controllers/cabang/makanan.controller';
 import { MutasiCabangController } from '../controllers/cabang/mutasi.controller';
+import { AuthController } from '../controllers/auth/auth.controller';
 
 
 export default function Router(app: Express) {
@@ -14,6 +15,11 @@ export default function Router(app: Express) {
     const busukCabangController = new BusukCabangController()
     const makananCabangController = new MakananController()
     const mutasiCabangController = new MutasiCabangController()
+    const authController = new AuthController()
+
+    // Auth
+    app.post("/v1/auth/login", authController.login)
+    app.post("/v1/auth/register", authController.register)
 
 
     // Cabang ===

@@ -90,3 +90,42 @@ model so_cabang {
   createdAt DateTime  @db.DateTime(0)
   updatedAt DateTime? @db.DateTime(0)
 }
+
+model bbaku_gudang {
+  id          Int      @id @default(autoincrement())
+  rm_kode     String   @db.VarChar(255)
+  rm_nama     String   @db.VarChar(255)
+  rm_satuan   String   @db.VarChar(255)
+  rm_konversi Int
+  rm_ket      Int
+  cek         String   @db.VarChar(255)
+  help_mutasi String   @db.VarChar(255)
+  gdg         String   @db.VarChar(255)
+  createdAt   DateTime @db.DateTime(0)
+  updatedAt   DateTime @db.DateTime(0)
+}
+
+model data_kirim_gudang {
+  id          Int       @id @default(autoincrement())
+  krm_rm      String    @db.VarChar(255)
+  krm_cabang  String    @db.VarChar(225)
+  krm_nama    String    @db.VarChar(225)
+  krm_qty     Int
+  tanggal     String    @db.VarChar(225)
+  nama_barang String    @db.VarChar(225)
+  satuan      String    @db.VarChar(225)
+  createdAt   DateTime  @default(now()) @db.DateTime(0)
+  updatedAt   DateTime? @db.DateTime(0)
+}
+
+model kd_supplier_gudang {
+  id        Int       @id @default(autoincrement())
+  kode      String    @db.VarChar(255)
+  nama      String    @db.VarChar(255)
+  kelompok  Int
+  alamat    Int
+  notelp    Int
+  sp_kota   String    @db.VarChar(255)
+  createdAt DateTime  @default(now()) @db.DateTime(0)
+  updatedAt DateTime? @db.DateTime(0)
+}
