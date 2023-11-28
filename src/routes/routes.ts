@@ -6,6 +6,8 @@ import { MakananController } from '../controllers/cabang/makanan.controller';
 import { MutasiCabangController } from '../controllers/cabang/mutasi.controller';
 import { AuthController } from '../controllers/auth/auth.controller';
 import { BbakuGudangController } from '../controllers/gudang/bbaku_gudang.controller';
+import { DataKirimGudangController } from '../controllers/gudang/datakirim_gudang.controller';
+import { KodeSupplierGudangController } from '../controllers/gudang/kd_supplier_gudang.controller';
 
 
 export default function Router(app: Express) {
@@ -17,8 +19,10 @@ export default function Router(app: Express) {
     const makananCabangController = new MakananController()
     const mutasiCabangController = new MutasiCabangController()
     const authController = new AuthController()
-
     const bbakuGudangController = new BbakuGudangController()
+    const dataKirimGudangController = new DataKirimGudangController()
+    const kdSupplierGudangController = new KodeSupplierGudangController()
+
 
     // Auth
     app.post("/v1/auth/login", authController.login)
@@ -68,5 +72,21 @@ export default function Router(app: Express) {
 
     app.get("/v1/gudang/bahan-baku", bbakuGudangController.getBBaku)
     app.post("/v1/gudang/bahan-baku", bbakuGudangController.createBBaku)
+    app.put("/v1/gudang/bahan-baku/:id", bbakuGudangController.updateBBaku)
+
+
+    // Data Kirim - Gudang
+
+
+    app.get("/v1/gudang/data-kirim", dataKirimGudangController.getDataKirim)
+    app.post("/v1/gudang/data-kirim", dataKirimGudangController.createDataKirim)
+    app.put("/v1/gudang/data-kirim/:id", dataKirimGudangController.updateDataKirim)
+
+    // Kode Supplier - Gudang
+
+    app.get("/v1/gudang/kode-supplier", kdSupplierGudangController.getKdSupplier)
+    app.post("/v1/gudang/kode-supplier", kdSupplierGudangController.createKdSupplier)
+    app.put("/v1/gudang/kode-supplier/:id", kdSupplierGudangController.updateKdSupplier)
+
 
 }
