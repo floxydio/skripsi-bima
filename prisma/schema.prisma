@@ -92,17 +92,17 @@ model so_cabang {
 }
 
 model bbaku_gudang {
-  id          Int      @id @default(autoincrement())
-  rm_kode     String   @db.VarChar(255)
-  rm_nama     String   @db.VarChar(255)
-  rm_satuan   String   @db.VarChar(255)
+  id          Int       @id @default(autoincrement())
+  rm_kode     String    @db.VarChar(255)
+  rm_nama     String    @db.VarChar(255)
+  rm_satuan   String    @db.VarChar(255)
   rm_konversi Int
   rm_ket      Int
-  cek         String   @db.VarChar(255)
-  help_mutasi String   @db.VarChar(255)
-  gdg         String   @db.VarChar(255)
-  createdAt   DateTime @db.DateTime(0)
-  updatedAt   DateTime @db.DateTime(0)
+  cek         String    @db.VarChar(255)
+  help_mutasi String    @db.VarChar(255)
+  gdg         String    @db.VarChar(255)
+  createdAt   DateTime  @db.DateTime(0)
+  updatedAt   DateTime? @db.DateTime(0)
 }
 
 model data_kirim_gudang {

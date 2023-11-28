@@ -5,6 +5,7 @@ import { BusukCabangController } from '../controllers/cabang/busuk_cabang.contro
 import { MakananController } from '../controllers/cabang/makanan.controller';
 import { MutasiCabangController } from '../controllers/cabang/mutasi.controller';
 import { AuthController } from '../controllers/auth/auth.controller';
+import { BbakuGudangController } from '../controllers/gudang/bbaku_gudang.controller';
 
 
 export default function Router(app: Express) {
@@ -16,6 +17,8 @@ export default function Router(app: Express) {
     const makananCabangController = new MakananController()
     const mutasiCabangController = new MutasiCabangController()
     const authController = new AuthController()
+
+    const bbakuGudangController = new BbakuGudangController()
 
     // Auth
     app.post("/v1/auth/login", authController.login)
@@ -60,5 +63,10 @@ export default function Router(app: Express) {
     app.put("/v1/cabang/mutasi-cabang/:id", mutasiCabangController.updateMutasiCabang)
     app.delete("/v1/cabang/mutasi-cabang/:id", mutasiCabangController.deleteMutasiCabang)
 
+
+    //  Gudang
+
+    app.get("/v1/gudang/bahan-baku", bbakuGudangController.getBBaku)
+    app.post("/v1/gudang/bahan-baku", bbakuGudangController.createBBaku)
 
 }
