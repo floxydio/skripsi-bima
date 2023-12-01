@@ -8,6 +8,7 @@ import { AuthController } from '../controllers/auth/auth.controller';
 import { BbakuGudangController } from '../controllers/gudang/bbaku_gudang.controller';
 import { DataKirimGudangController } from '../controllers/gudang/datakirim_gudang.controller';
 import { KodeSupplierGudangController } from '../controllers/gudang/kd_supplier_gudang.controller';
+import { SoCabangController } from '../controllers/cabang/so_cabang.controller';
 
 
 export default function Router(app: Express) {
@@ -22,6 +23,7 @@ export default function Router(app: Express) {
     const bbakuGudangController = new BbakuGudangController()
     const dataKirimGudangController = new DataKirimGudangController()
     const kdSupplierGudangController = new KodeSupplierGudangController()
+    const soCabangController = new SoCabangController()
 
 
     // Auth
@@ -52,6 +54,13 @@ export default function Router(app: Express) {
     app.post("/v1/cabang/busuk-cabang", busukCabangController.createBusukCabang)
     app.put("/v1/cabang/busuk-cabang/:id", busukCabangController.updateBusukCabang)
     app.delete("/v1/cabang/busuk-cabang/:id", busukCabangController.deleteBusukCabang)
+
+    //  SO Cabang
+
+    app.get("/v1/cabang/so-cabang", soCabangController.getSoCabang)
+    app.post("/v1/cabang/so-cabang", soCabangController.createSoCabang)
+    app.put("/v1/cabang/so-cabang/:id", soCabangController.updateSoCabang)
+    app.delete("/v1/cabang/so-cabang/:id", soCabangController.deleteSoCabang)
 
     // Makanan Cabang ---
 
@@ -87,6 +96,8 @@ export default function Router(app: Express) {
     app.get("/v1/gudang/kode-supplier", kdSupplierGudangController.getKdSupplier)
     app.post("/v1/gudang/kode-supplier", kdSupplierGudangController.createKdSupplier)
     app.put("/v1/gudang/kode-supplier/:id", kdSupplierGudangController.updateKdSupplier)
+
+
 
 
 }
