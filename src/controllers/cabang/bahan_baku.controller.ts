@@ -56,6 +56,7 @@ export class BahanBakuCabangController {
     public async updateBahanBaku(req: Request, res: Response) {
         const { id } = req.params
         const { rm_kode, rm_nama, rm_satuan } = req.body
+        console.log(req.body)
         await prisma.bahanbaku_cabang.update({
             where: {
                 id: Number(id)

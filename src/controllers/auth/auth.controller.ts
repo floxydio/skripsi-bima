@@ -17,13 +17,21 @@ export class AuthController {
                 if (checkPassword) {
                     return res.status(StatusCode.OK).json({
                         message: "Login successfully",
-                        data: user
+                        data: {
+                            id: user.id,
+                            name: user.name,
+                            role: user.role
+                        }
                     })
                 } else {
                     return res.status(StatusCode.BAD_REQUEST).json({
                         message: "Password is incorrect"
                     })
                 }
+            } else {
+                return res.status(StatusCode.BAD_REQUEST).json({
+                    message: "Username not found"
+                })
             }
         })
     }

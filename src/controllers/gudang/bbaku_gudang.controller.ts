@@ -18,13 +18,12 @@ export class BbakuGudangController {
 
     public async createBBaku(req: Request, res: Response) {
         const { rm_kode, rm_nama, rm_satuan, rm_konversi, rm_ket, cek, help_mutasi, gdg } = req.body
-
         await prisma.bbaku_gudang.create({
             data: {
                 rm_kode: rm_kode,
                 rm_nama: rm_nama,
                 rm_satuan: rm_satuan,
-                rm_konversi: rm_konversi,
+                rm_konversi: Number(rm_konversi),
                 rm_ket: rm_ket,
                 cek: cek,
                 help_mutasi: help_mutasi,
@@ -38,23 +37,23 @@ export class BbakuGudangController {
             })
         }).catch((err) => {
             return res.status(StatusCode.BAD_REQUEST).json({
-                message: err
+                message: err.message
             })
 
         })
     }
 
     public async updateBBaku(req: Request, res: Response) {
-        const { id, rm_kode, rm_nama, rm_satuan, rm_konversi, rm_ket, cek, help_mutasi, gdg } = req.body
+        const { rm_kode, rm_nama, rm_satuan, rm_konversi, rm_ket, cek, help_mutasi, gdg } = req.body
         await prisma.bbaku_gudang.update({
             where: {
-                id: id
+                id: Number(req.params.id)
             },
             data: {
                 rm_kode: rm_kode,
                 rm_nama: rm_nama,
                 rm_satuan: rm_satuan,
-                rm_konversi: rm_konversi,
+                rm_konversi: Number(rm_konversi),
                 rm_ket: rm_ket,
                 cek: cek,
                 help_mutasi: help_mutasi,
@@ -67,6 +66,7 @@ export class BbakuGudangController {
                 data: data
             })
         }).catch((err) => {
+            console.log(err)
             return res.status(StatusCode.BAD_REQUEST).json({
                 message: err
             })
