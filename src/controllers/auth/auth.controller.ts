@@ -47,10 +47,10 @@ export class AuthController {
                 name: name,
                 role: 1
             }
-        }).then((user) => {
+        }).then(() => {
             return res.status(StatusCode.OK).json({
+                status: 200,
                 message: "Register successfully",
-                data: user
             })
         }).catch((err) => {
             return res.status(StatusCode.BAD_REQUEST).json({

@@ -38,8 +38,8 @@ export class MutasiCabangController {
                 nama_bb: nama_bb as string,
                 satuan: satuan as string,
                 tanggal_mutasi: tanggal_mutasi as string,
-                mutasi_terima: mutasi_terima as number,
-                mutasi_kirim: mutasi_kirim as number,
+                mutasi_terima: Number(mutasi_terima),
+                mutasi_kirim: Number(mutasi_kirim),
                 keterangan: keterangan as string,
                 createdAt: new Date(),
             }
@@ -71,8 +71,8 @@ export class MutasiCabangController {
                 nama_bb: nama_bb as string,
                 satuan: satuan as string,
                 tanggal_mutasi: tanggal_mutasi as string,
-                mutasi_terima: mutasi_terima as number,
-                mutasi_kirim: mutasi_kirim as number,
+                mutasi_terima: Number(mutasi_terima),
+                mutasi_kirim: Number(mutasi_kirim),
                 keterangan: keterangan as string,
                 updatedAt: new Date(),
             }

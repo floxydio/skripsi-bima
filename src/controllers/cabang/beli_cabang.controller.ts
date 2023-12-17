@@ -38,7 +38,7 @@ export class BeliCabangController {
                 nama_bb: nama_bb as string,
                 satuan: satuan as string,
                 tanggal_bb: tanggal_bb as string,
-                total_beli: total_beli as number,
+                total_beli: Number(total_beli),
                 createdAt: new Date(),
             }
         }).then(() => {
